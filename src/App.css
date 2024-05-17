@@ -1,0 +1,128 @@
+#bodyBg {
+  background-image: url("https://images.unsplash.com/photo-1526066843114-f1623fde3476?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+}
+#weatherInfoBox {
+  background-image: url("https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  height: 80vh;
+  width: 500px;
+  border-radius: 20px;
+  opacity: 0.8;
+}
+#tempTimeCityDisplay {
+  background-image: url("https://images.unsplash.com/photo-1558486012-817176f84c6d?q=80&w=1804&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  height: 80vh;
+  width: 400px;
+  border-radius: 20px;
+  
+  opacity: 0.5;
+}
+#weatherInfoContainer {
+  display: flex;
+  position: absolute;
+  top: 10%;
+  left: 25%;
+}
+#placeName {
+  font-size: 50px;
+  position: absolute;
+  top: 7%;
+  left: 25%;
+}
+#temperature {
+  font-size: 70px;
+  position: absolute;
+  top: 75%;
+  left: 35%;
+}
+#dateConteiner {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 91%;
+  left: 3%;
+  div {
+    font-size: 20px;
+  }
+}
+#time{
+  font-size: 50px;
+  position: absolute;
+  top: 80%;
+  left: 3%;
+  
+}
+
+
+
+/* ?????????????? */
+#weatherDetail{
+  padding: 5px;
+  position: absolute;
+  top: 62%;
+  left: 57%;
+  
+  color: black;
+  width: 380px;
+  
+  font-size: 30px;
+  tbody{
+    font-weight: bold;
+    border-bottom: 1px solid;
+    padding: 5px;
+    border-top: 3px solid;
+    /* gap: 110px; */
+    justify-content: space-evenly;
+    display: flex;
+  }
+  
+}
+#cityName{
+
+  position: absolute;
+  top: 49%;
+  left: 70%;
+  font-size: 50px;
+  font-weight: bold;
+  
+}
+#searchBar{
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  top: 40%;
+  left: 58%;
+  border-top: 3px solid white; 
+  
+  padding: 10px;
+  
+  input{
+    height: 40px;
+    width: 300px;
+    background: none;
+    border: 1px solid;
+    font-size: 30px;
+    border-radius: 10px;
+    
+  }
+  button{
+    height: 40px;
+    width: 50px;
+    background: none;
+    border: 1px solid;
+    border-radius: 10px;
+    
+
+  }
+  
+}
+#weatherCondition{
+  position: absolute;
+  top: 20%;
+  left: 69%;
+  font-size: 80px;
+  font-weight: bold;
+
+}
