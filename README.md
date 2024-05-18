@@ -1,9 +1,15 @@
+![This is an alt text.](./src/Utils/Screenshot%20from%202024-05-19%2004-15-52.png)
+
+
+
 # Current Weather Display:
 Show the current weather conditions such as temperature, humidity, wind speed, and description (e.g., sunny, cloudy, rainy).
 
 # Forecast:
 Display a 5-day weather forecast with details like temperature highs and lows, weather icons, and descriptions for each day.
-Location Selection: Allow users to enter a location (city or ZIP code) to get weather information for that specific area.
+
+# Location Selection:
+Allow users to enter a location (city or ZIP code) to get weather information for that specific area.
 
 # Unit Conversion:
 Provide options to switch between Celsius and Fahrenheit for temperature display.

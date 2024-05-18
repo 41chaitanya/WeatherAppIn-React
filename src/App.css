@@ -61,7 +61,7 @@
 #weatherDetail{
   padding: 5px;
   position: absolute;
-  top: 62%;
+  top: 66%;
   left: 57%;
   
   color: black;
@@ -82,8 +82,8 @@
 #cityName{
 
   position: absolute;
-  top: 49%;
-  left: 70%;
+  top: 55%;
+  left: 67%;
   font-size: 50px;
   font-weight: bold;
   
@@ -92,7 +92,7 @@
   display: flex;
   gap: 5px;
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 58%;
   border-top: 3px solid white; 
   
@@ -120,9 +120,54 @@
 }
 #weatherCondition{
   position: absolute;
-  top: 20%;
-  left: 69%;
+  top: 30%;
+  left: 65%;
   font-size: 80px;
   font-weight: bold;
+
+}
+#weatherConditionIcon{
+  position: absolute;
+  bottom: 72%;
+  /* top: 1%; */
+  left: 65%;
+  width: 200px;
+}
+#fivedaysWeather{
+  background-color: black;
+  height: 125px;
+  margin: 25px;
+  opacity: .8;
+  
+}
+#dayNum{
+  display: flex;
+  position: absolute;
+  top: 5%;
+  left: 8%;
+  gap: 70px;
+  /* padding-left: 61px; */
+  /* padding-top: 10px; */
+  /* padding-bottom: 1px; */
+  font-size: 20px;
+  /* justify-content: space-between; */
+}
+#fiveDayIcon{
+  position: absolute;
+  top: 9%;
+  left: 0%;
+  display: flex;
+  padding-left: 61px;
+  gap: 50px;
+  height: 40px;
+  width: 30px;
+}
+#fiveDayTempetature{
+  position: absolute;
+  top: 16%;
+  left: 7%;
+  display: flex;
+  gap: 48px;
+  font-size: 20px;
 
 }
