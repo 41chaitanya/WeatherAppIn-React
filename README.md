@@ -14,8 +14,8 @@ Use weather icons (like sunny, cloudy, rainy) to visually represent the weather 
 # Background Images:
 Dynamically change background images based on the weather conditions (e.g., sunny day background for clear weather, rainy day background for rainy weather).
 
-# Interactive Map:
-Integrate an interactive map that shows weather information for different regions when users click on specific areas.
+<!-- # Interactive Map:
+Integrate an interactive map that shows weather information for different regions when users click on specific areas. -->
 
 # Weather Alerts: 
 Display weather alerts or warnings for severe weather conditions like storms, hurricanes, or heavy rainfall.
@@ -23,8 +23,7 @@ Display weather alerts or warnings for severe weather conditions like storms, hu
 # Historical Data:
 Allow users to view historical weather data for a specific location, such as past week's temperatures or rainfall.
 
-# Responsive Design:
-Ensure your weather app is mobile-friendly and adapts well to different screen sizes and devices.
+
 
 
 
