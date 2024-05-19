@@ -9,11 +9,11 @@ export default class App extends Component {
     super(props)
   
     this.state = {
-      temperature:undefined
+      cityName:undefined
     }
   }
-  handleTemperatureUpdate = (temperature) => {
-    this.setState({ temperature });
+  fiveDayTemp = (CityName) => {
+    this.setState({ cityName:CityName });
   };
   
   
@@ -22,8 +22,8 @@ export default class App extends Component {
       <>
         <div id='bodyBg'>
           <div id="weatherInfoContainer">
-             <WeatherInfoBox temperature={this.state.temperature}/>
-             <TempTimeCityDisplay onTemperatureUpdate={this.handleTemperatureUpdate}/>
+             <WeatherInfoBox cityName={this.state.cityName}/>
+             <TempTimeCityDisplay onFiveDayTemp={this.fiveDayTemp}/>
           </div>
           
           

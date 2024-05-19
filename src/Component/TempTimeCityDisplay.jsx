@@ -1,117 +1,134 @@
 import React, { Component } from "react";
 
 export default class TempTimeCityDisplay extends Component {
-  
   constructor(props) {
     super(props);
 
     this.state = {
-      icon:undefined,
-      cityName:"bhopal",
-      temperature:undefined,
-      // temperatureUnit:'metric',
-      temperatureUnitText:'F',
-      humidity:undefined,
-      pressure:undefined,
-      windSpeed:undefined,
-      weatherCondition:undefined,
+      icon: undefined,
+      cityName:undefined,
+      temperature: undefined,
+      temperatureUnit: "cel",
+      temperatureUnitText: "C",
+      humidity: undefined,
+      pressure: undefined,
+      windSpeed: undefined,
+      weatherCondition: undefined,
     };
   }
-  setWeatherConditionIcon=(weatherCondition)=>{
-    let iconUrl=undefined;
+  setWeatherConditionIcon = (weatherCondition) => {
+    let iconUrl = undefined;
     switch (weatherCondition) {
       case "Haze":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/fog.svg" ;
+        iconUrl = "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/fog.svg";
         break;
       case "Clouds":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/cloudy.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/cloudy.svg";
         break;
       case "Rain":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-day-rain.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-day-rain.svg";
         break;
       case "Snow":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/snow.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/snow.svg";
         break;
       case "Dust":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/dust-wind.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/dust-wind.svg";
         break;
       case "Drizzle":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/drizzle.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/drizzle.svg";
         break;
       case "Fog":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/tornado.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/tornado.svg";
         break;
       case "Smoke":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-day-smoke.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-day-smoke.svg";
         break;
       case "Tornado":
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/tornado.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/tornado.svg";
         break;
       default:
-        iconUrl= "https://bmcdn.nl/assets/weather-icons/v3.0/line/svg/clear-day.svg" ;
+        iconUrl =
+          "https://bmcdn.nl/assets/weather-icons/v3.0/line/svg/clear-day.svg";
     }
     this.setState({ icon: iconUrl });
   };
 
   fetchWeatherData = (CityName) => {
     const Url = `https://api.openweathermap.org/data/2.5/weather?q=${CityName}&appid=06a6917e9d6170ae095c0968c3b53a3a&units=metric`;
-    
+
     fetch(Url)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error("Error fetching weather data");
-      }
-    })
-    .then((data) => {
-      this.setState({
-        // temperatureUnit:,
-        temperature: data.main.temp,
-        humidity: data.main.humidity,
-        pressure: data.main.pressure,
-        windSpeed: data.wind.speed,
-        weatherCondition: data.weather[0].main,
-        cityName: data.name,
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Error fetching weather data");
+        }
+      })
+      .then((data) => {
+        this.setState({
+          
+          temperature: data.main.temp,
+          humidity: data.main.humidity,
+          pressure: data.main.pressure,
+          windSpeed: data.wind.speed,
+          weatherCondition: data.weather[0].main,
+          cityName: data.name,
+        });
+        this.props.onFiveDayTemp(data.name);
+        this.setWeatherConditionIcon(data.weather[0].main);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      this.props.onTemperatureUpdate(data.main.temp);
-      this.setWeatherConditionIcon(data.weather[0].main)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   };
   componentDidMount = () => {
-    this.fetchWeatherData();
+    this.fetchWeatherData('london');
   };
 
-  
   setCityName = (event) => {
     const inputValue = document.querySelector("#searchInput");
     const cityName = inputValue.value;
-  
+
     this.fetchWeatherData(cityName);
   };
-  changeTemperatureUnit=()=>{
-   if(this.state.temperatureUnitText==='C'){
-    console.log("celcious")
-    this.setState({temperatureUnitText:'F'})
+ convertCelsiusToFahrenheit(celsius) {
+    return (celsius * 9) / 5 + 32;
   }
-  else{
-     console.log("fernhite")
+convertFahrenheitToCelsius(fahrenheit) {
+    return Math.floor((fahrenheit - 32) * 5/9);
+}
 
-   }
-    
-   
-     
-  
-
+  changeTemperatureUnit = () => {
+    if (this.state.temperatureUnit === "cel") {
+      const tempInFahrenheit=this.convertCelsiusToFahrenheit(this.state.temperature)
+      this.setState({
+        temperature: tempInFahrenheit,
+        temperatureUnit: "fah",
+        temperatureUnitText: "F",
+      })
+      
     }
+    else{
+      const tempInCelsius=this.convertFahrenheitToCelsius(this.state.temperature)
+      this.setState({
+        temperature: tempInCelsius,
+        temperatureUnit: "cel",
+        temperatureUnitText: "C",
+      })
+      
+      
+    }
+  };
 
-  
-  
   render() {
-
     return (
       <div id="tempTimeCityDisplay">
         <img id="weatherConditionIcon" src={this.state.icon} alt="" />
@@ -121,13 +138,16 @@ export default class TempTimeCityDisplay extends Component {
           <button onClick={this.setCityName}>Search</button>
         </div>
         <div id="cityName">{this.state.cityName}</div>
-        <button id="unitConversion" onClick={this.changeTemperatureUnit}>F</button>
+        <button id="unitConversion" onClick={this.changeTemperatureUnit}>
+          F
+        </button>
         <div id="weatherDetail">
           <tbody className="weatherInfo">
             <tr>Teperature:</tr>
             <tr>
               {this.state.temperature}
-              <sup>o</sup>{this.state.temperatureUnitText}
+              <sup>o</sup>
+              {this.state.temperatureUnitText}
             </tr>
           </tbody>
           <tbody className="weatherInfo">
@@ -148,4 +168,3 @@ export default class TempTimeCityDisplay extends Component {
     );
   }
 }
-
