@@ -7,8 +7,10 @@ export default class TempTimeCityDisplay extends Component {
 
     this.state = {
       icon:undefined,
-      cityName:undefined,
+      cityName:"bhopal",
       temperature:undefined,
+      // temperatureUnit:'metric',
+      temperatureUnitText:'F',
       humidity:undefined,
       pressure:undefined,
       windSpeed:undefined,
@@ -64,6 +66,7 @@ export default class TempTimeCityDisplay extends Component {
     })
     .then((data) => {
       this.setState({
+        // temperatureUnit:,
         temperature: data.main.temp,
         humidity: data.main.humidity,
         pressure: data.main.pressure,
@@ -81,6 +84,7 @@ export default class TempTimeCityDisplay extends Component {
   componentDidMount = () => {
     this.fetchWeatherData();
   };
+
   
   setCityName = (event) => {
     const inputValue = document.querySelector("#searchInput");
@@ -88,6 +92,23 @@ export default class TempTimeCityDisplay extends Component {
   
     this.fetchWeatherData(cityName);
   };
+  changeTemperatureUnit=()=>{
+   if(this.state.temperatureUnitText==='C'){
+    console.log("celcious")
+    this.setState({temperatureUnitText:'F'})
+  }
+  else{
+     console.log("fernhite")
+
+   }
+    
+   
+     
+  
+
+    }
+
+  
   
   render() {
 
@@ -100,12 +121,13 @@ export default class TempTimeCityDisplay extends Component {
           <button onClick={this.setCityName}>Search</button>
         </div>
         <div id="cityName">{this.state.cityName}</div>
+        <button id="unitConversion" onClick={this.changeTemperatureUnit}>F</button>
         <div id="weatherDetail">
           <tbody className="weatherInfo">
             <tr>Teperature:</tr>
             <tr>
               {this.state.temperature}
-              <sup>o</sup>C
+              <sup>o</sup>{this.state.temperatureUnitText}
             </tr>
           </tbody>
           <tbody className="weatherInfo">
